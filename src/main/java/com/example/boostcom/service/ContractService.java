@@ -1,4 +1,4 @@
 package com.example.boostcom.service;
 
-public class LogService {
+public interface ContractService {
 }

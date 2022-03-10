@@ -13,7 +13,7 @@ public class ContractEntity {
     @Column(nullable = false,name = "started")
     private LocalDate dateStarted;
     @Column(nullable = false,name = "deadline")
-    private LocalDate dateDeadline;
+    private LocalDate dateExpire;
     @ManyToOne
     private ProviderEntity provider;
     @ManyToOne
@@ -31,7 +31,7 @@ public class ContractEntity {
     }
 
     public ContractEntity setDateDeadline(LocalDate dateDeadline) {
-        this.dateDeadline = dateDeadline;
+        this.dateExpire = dateDeadline;
         return this;
     }
 
@@ -54,7 +54,7 @@ public class ContractEntity {
     }
 
     public LocalDate getDateDeadline() {
-        return dateDeadline;
+        return dateExpire;
     }
 
     public ProviderEntity getProvider() {

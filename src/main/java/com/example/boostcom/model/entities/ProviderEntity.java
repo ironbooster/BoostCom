@@ -11,8 +11,7 @@ public class ProviderEntity {
     private Long id;
 
     @Column(unique = true, nullable = false)
-    private String name;
-    private String imageUrl;
+    private String providerName;
 
 
     public ProviderEntity setId(Long id) {
@@ -21,24 +20,17 @@ public class ProviderEntity {
     }
 
     public ProviderEntity setName(String name) {
-        this.name = name;
+        this.providerName = name;
         return this;
     }
 
-    public ProviderEntity setImageUrl(String imageUrl) {
-        this.imageUrl = imageUrl;
-        return this;
-    }
 
     public Long getId() {
         return id;
     }
 
     public String getName() {
-        return name;
+        return providerName;
     }
 
-    public String getImageUrl() {
-        return imageUrl;
-    }
 }

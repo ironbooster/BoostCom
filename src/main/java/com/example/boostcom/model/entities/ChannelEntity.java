@@ -3,6 +3,7 @@ package com.example.boostcom.model.entities;
 import com.example.boostcom.model.entities.enums.CategoryEnum;
 
 import javax.persistence.*;
+import java.math.BigDecimal;
 
 @Entity
 @Table(name="channels")
