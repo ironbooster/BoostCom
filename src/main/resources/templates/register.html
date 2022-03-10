@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>BoostCom</title>
+    <link rel="icon" type="image/x-icon" th:href="@{/img/logoic.png}">
+    <link th:href="@{/css/nav.css}" rel="stylesheet">
+    <link th:href="@{/css/forms.css}" rel="stylesheet">
+
+</head>
+<body>
+<ul>
+    <li><a href="/">Home</a></li>
+    <li><a href="#">Contracts</a></li>
+    <li><a href="#">Providers</a></li>
+    <li><a href="#">Channels</a></li>
+    <li style="float:right; font-weight: bold;">
+        <a class="active" href="/user/register">Register</a></li>
+    <li style="float:right; font-weight: bold;">
+        <a href="/user/login">Log in</a></li>
+</ul>
+
+<form th:action="@{/user/register}" th:object="${userRegisterDto}" method="POST">
+
+        <label><b>E-Mail</b></label>
+        <input type="text" placeholder="Enter E-Mail" th:field="*{email}"  >
+
+        <label><b>Name</b></label>
+        <input type="text" placeholder="Enter First Name" th:field="*{firstName}">
+
+        <label><b>Last Name</b></label>
+        <input type="text" placeholder="Enter Last Name" th:field="*{lastName}">
+
+
+        <label><b>Username</b></label>
+        <input type="text" placeholder="Enter Username" name="username" th:field="*{username}">
+
+        <label><b>Password</b></label>
+        <input type="password" placeholder="Enter Password" name="password" th:field="*{password}">
+        <p>Already have an account? <a style="text-decoration: none;" href="/user/login">Log In</a></p>
+
+        <button type="submit">Register</button>
+</form>
+
+
+</body>
+</html>

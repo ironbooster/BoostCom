@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>BoostCom</title>
+    <link rel="icon" type="image/x-icon" th:href="@{/img/logoic.png}">
+    <link th:href="@{/css/nav.css}" rel="stylesheet">
+    <link th:href="@{/css/forms.css}" rel="stylesheet">
+
+
+</head>
+<body>
+<ul>
+    <li><a href="/">Home</a></li>
+    <li><a href="#">Contracts</a></li>
+    <li><a href="#">Providers</a></li>
+    <li><a href="#">Channels</a></li>
+    <li style="float:right; font-weight: bold;">
+        <a href="/user/register">Register</a></li>
+    <li style="float:right; font-weight: bold;">
+        <a class="active" href="/user/login">Log in</a></li>
+</ul>
+
+<form th:action="@{/user/login}" th:object="${userDto}" method="POST">
+
+    <label><b>Username</b></label>
+    <input type="text" placeholder="Enter Username" th:field="*{username}">
+
+    <label><b>Password</b></label>
+    <input type="password" placeholder="Enter Password" name="password" th:field="*{password}">
+    <p>New to BoostCom? <a style="text-decoration: none;" href="/user/register">Create an account</a></p>
+
+    <button type="submit">Log In</button>
+</form>
+
+
+</body>
+</html>

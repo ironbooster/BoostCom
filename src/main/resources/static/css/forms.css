@@ -1,0 +1,38 @@
+button {
+    background-color: #4d4dff;
+    color: white;
+    padding: 14px 20px;
+    margin: 8px 0;
+    border: none;
+    cursor: pointer;
+    width: 50%;
+    align-content: center;
+}
+
+button:hover {
+
+    opacity: 0.8;
+}
+
+
+input[type=text], input[type=password] {
+    width: 100%;
+    padding: 7px 20px;
+    margin: 8px 0;
+    display: inline-block;
+    border: 1px solid #ccc;
+    box-sizing: border-box;
+}
+
+form {border: 3px solid #f1f1f1;
+    text-align: center;
+    background-color: #cce6ff;
+    max-width:400px;
+    margin: 100px auto;
+
+}
+label {
+    font-family: Tahoma, sans-serif;
+    font-size: 13px;
+
+}
