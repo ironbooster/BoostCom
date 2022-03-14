@@ -15,7 +15,6 @@ public class PacketEntity {
     @ManyToMany(fetch = FetchType.EAGER)
     private List<ChannelEntity> channels;
 
-
     public PacketEntity setId(Long id) {
         this.id = id;
         return this;

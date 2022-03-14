@@ -20,7 +20,6 @@ public class ChannelEntity {
     private CategoryEnum channelCategoryEnum;
 
 
-
     public ChannelEntity setId(Long id) {
         this.id = id;
         return this;

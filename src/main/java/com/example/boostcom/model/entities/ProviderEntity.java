@@ -13,24 +13,21 @@ public class ProviderEntity {
     @Column(unique = true, nullable = false)
     private String providerName;
 
-
     public ProviderEntity setId(Long id) {
         this.id = id;
         return this;
     }
 
-    public ProviderEntity setName(String name) {
-        this.providerName = name;
+    public ProviderEntity setProviderName(String providerName) {
+        this.providerName = providerName;
         return this;
     }
-
 
     public Long getId() {
         return id;
     }
 
-    public String getName() {
+    public String getProviderName() {
         return providerName;
     }
-
 }

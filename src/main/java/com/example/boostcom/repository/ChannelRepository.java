@@ -12,5 +12,6 @@ public interface ChannelRepository extends JpaRepository<ChannelEntity,Long> {
 
     Optional<ChannelEntity> findByChannelName(String channelName);
 
+
     Optional<ChannelEntity> findByChannelCategoryEnum(CategoryEnum category);
 }

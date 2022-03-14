@@ -21,11 +21,9 @@ public class UserEntity {
     private String password;
 
     @OneToMany
-    private List<ContractEntity> contract;
-
+    private List<ContractUserEntity> contract;
     @ManyToMany
     private List<UserRoleEntity> roles;
-
 
     public UserEntity setId(Long id) {
         this.id = id;
@@ -57,7 +55,7 @@ public class UserEntity {
         return this;
     }
 
-    public UserEntity setContract(List<ContractEntity> contract) {
+    public UserEntity setContract(List<ContractUserEntity> contract) {
         this.contract = contract;
         return this;
     }
@@ -91,7 +89,7 @@ public class UserEntity {
         return password;
     }
 
-    public List<ContractEntity> getContract() {
+    public List<ContractUserEntity> getContract() {
         return contract;
     }
 
