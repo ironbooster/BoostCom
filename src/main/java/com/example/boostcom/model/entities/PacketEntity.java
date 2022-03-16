@@ -13,6 +13,10 @@ public class PacketEntity {
     @Column(nullable = false)
     private String name;
     @ManyToMany(fetch = FetchType.EAGER)
+    @JoinTable(
+            name = "packet_channel",
+            joinColumns = @JoinColumn(name = "packet_id"),
+            inverseJoinColumns = @JoinColumn(name = "channel_id"))
     private List<ChannelEntity> channels;
 
     public PacketEntity setId(Long id) {

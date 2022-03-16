@@ -21,8 +21,13 @@ public class UserEntity {
     private String password;
 
     @OneToMany
+    @JoinColumn(name = "user_id")
     private List<ContractUserEntity> contract;
-    @ManyToMany
+    @ManyToMany(fetch = FetchType.EAGER)
+    @JoinTable(
+            name = "user_roles",
+            joinColumns = @JoinColumn(name = "user_id"),
+            inverseJoinColumns = @JoinColumn(name = "role_id"))
     private List<UserRoleEntity> roles;
 
     public UserEntity setId(Long id) {

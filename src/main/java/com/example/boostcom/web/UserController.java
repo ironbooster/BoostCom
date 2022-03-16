@@ -1,7 +1,7 @@
 package com.example.boostcom.web;
 
-import com.example.boostcom.model.dto.UserDto;
-import com.example.boostcom.model.dto.UserRegisterDto;
+import com.example.boostcom.model.dto.user.UserDto;
+import com.example.boostcom.model.dto.user.UserRegisterDto;
 import org.springframework.stereotype.Controller;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -18,13 +18,9 @@ public class UserController {
 
 
     @ModelAttribute("userRegisterDto")
-    public UserRegisterDto createRegistrationBinding() {
-        return new UserRegisterDto();
-    }
+    public UserRegisterDto createRegistrationBinding() {return new UserRegisterDto();}
     @ModelAttribute("userDto")
-    public UserDto createUserBinding() {
-        return new UserDto();
-    }
+    public UserDto createUserBinding() {return new UserDto();}
 
     @GetMapping("/register")
     public String register(){

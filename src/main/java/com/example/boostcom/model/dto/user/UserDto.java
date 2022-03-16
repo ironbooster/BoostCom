@@ -1,4 +1,4 @@
-package com.example.boostcom.model.dto;
+package com.example.boostcom.model.dto.user;
 
 public class UserDto {
 

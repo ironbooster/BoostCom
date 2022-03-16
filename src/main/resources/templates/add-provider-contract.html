@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>BoostCom</title>
+    <link rel="icon" type="image/x-icon" th:href="@{/img/logoic.png}">
+    <link th:href="@{/css/nav.css}" rel="stylesheet">
+    <link th:href="@{/css/buttons.css}" rel="stylesheet">
+    <link th:href="@{/css/forms.css}" rel="stylesheet">
+
+
+</head>
+<body>
+
+<ul style="text-decoration: none">
+    <li><a href="/">Home</a></li>
+    <li><a class="active" href="/contracts/selection">Contracts</a></li>
+    <li><a href="#">Providers</a></li>
+    <li><a href="#">Channels</a></li>
+    <li><a href="#">Packets</a></li>
+    <li style="float:right; font-weight: bold;"><a href="/user/register">Register</a></li>
+    <li style="float:right; font-weight: bold;"><a href="/user/login">Log in</a></li>
+
+</ul>
+
+<img style="width:250px;display:block;
+  margin-left: auto;
+  margin-right: auto;" th:src="@{/img/boostcomLogo.png}"   alt="img"/>
+
+
+<form th:action="@{/contracts/provider/add}"
+ th:object="${contractProviderBindingDto}" method="POST">
+
+<label><b>Provider Name</b></label>
+<input type="text" placeholder="Enter Provider Name" th:field="*{providerName}">
+
+    <label><b>Start Date</b></label>
+    <input type="date" min="2022-01-01" max="2023-01-01" th:field="*{startDate}"><br>
+
+    <label style="margin-top: 10px"><b>Expire Date</b></label>
+    <input type="date" min="2022-01-01" max="2023-01-01" th:field="*{expireDate}">
+
+<button type="submit">Create Provider Contract</button>
+</form>
+
+
+</body>
+</html>tml>

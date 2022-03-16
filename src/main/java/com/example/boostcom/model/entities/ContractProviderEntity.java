@@ -13,11 +13,15 @@ public class ContractProviderEntity {
     private Long id;
     @Column(nullable = false,name = "started")
     private LocalDate dateStarted;
-    @Column(nullable = false,name = "deadline")
+    @Column(nullable = false,name = "expire")
     private LocalDate dateExpire;
-    @OneToOne(cascade = CascadeType.ALL)
+    @Column(nullable = false,name = "price")
+    private double price;
+    @OneToOne
+    @JoinColumn(name = "provider_id")
     private ProviderEntity providerEntity;
-    @OneToMany(cascade = CascadeType.ALL)
+    @OneToMany(cascade = CascadeType.ALL,orphanRemoval = true)
+    @JoinColumn(name = "contract_providers_id")
     private List<ChannelEntity> channelEntityList;
 
     public ContractProviderEntity setId(Long id) {

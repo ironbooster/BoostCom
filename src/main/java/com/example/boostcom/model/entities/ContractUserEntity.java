@@ -13,11 +13,15 @@ public class ContractUserEntity {
     private Long id;
     @Column(nullable = false,name = "started")
     private LocalDate dateStarted;
-    @Column(nullable = false,name = "deadline")
+    @Column(nullable = false,name = "expired")
     private LocalDate dateExpire;
     @Column(nullable = false,name = "price")
     private double price;
     @ManyToMany
+    @JoinTable(
+            name = "packet_user_contract",
+            joinColumns = @JoinColumn(name = "contract_user_id"),
+            inverseJoinColumns = @JoinColumn(name = "packet_id"))
     private List<PacketEntity> packetEntities;
 
 

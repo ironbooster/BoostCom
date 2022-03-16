@@ -5,7 +5,7 @@ import com.example.boostcom.model.entities.enums.UserRoleEnum;
 import javax.persistence.*;
 
 @Entity
-@Table(name = "user_roles")
+@Table(name = "roles")
 public class UserRoleEntity {
 
     @Id
