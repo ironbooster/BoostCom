@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>BoostCom</title>
+    <link rel="icon" type="image/x-icon" th:href="@{/img/logoic.png}">
+    <link th:href="@{/css/nav.css}" rel="stylesheet">
+    <link th:href="@{/css/table.css}" rel="stylesheet">
+
+</head>
+<body>
+
+<ul style="text-decoration: none">
+    <li><a href="/">Home</a></li>
+    <li><a class="active" href="/contracts/selection">Contracts</a></li>
+    <li><a href="#">Providers</a></li>
+    <li><a href="#">Channels</a></li>
+    <li><a href="#">Packets</a></li>
+    <li style="float:right; font-weight: bold;"><a href="/user/register">Register</a></li>
+    <li style="float:right; font-weight: bold;"><a href="/user/login">Log in</a></li>
+
+</ul>
+
+
+<form action="/contracts/provider/add" method="GET" style="position: absolute; top: 130px;left:65%;">
+    <button type="submit">New Provider Contract</button>
+</form>
+<table style="margin-top:200px">
+    <tr>
+        <th>Provider</th>
+        <th>Contract Price</th>
+        <th>Channels</th>
+        <th>Start Date</th>
+        <th>Expire Date</th>
+
+
+    </tr>
+    <tr th:each ="contract : ${providerContracts}">
+        <td th:text="${contract.providerEntity.providerName}"></td>
+        <td th:text="${contract.price}"></td>
+        <td><table><tr>
+            <th>Channel</th>
+            <th>Price</th>
+            <th>Category</th>
+        </tr>
+            <tr th:each="channel : ${contract.channelEntityList}">
+                <td th:text="${channel.channelName}"></td>
+                <td th:text="${channel.price}"></td>
+                <td th:text="${channel.channelCategoryEnum}"></td>
+            </tr>
+        </table>
+        <td th:text="${contract.dateStarted}"></td>
+        <td th:text="${contract.dateExpire}"></td>
+        <td><a th:href="'/' + ${contract.id}" style="color: red">✏</a></td>
+        <td><a th:href="'/' + ${contract.id}">🗑️</a></td>
+</table>
+</body>
+</html>

@@ -18,6 +18,7 @@
     <li><a href="#">Providers</a></li>
     <li><a href="#">Channels</a></li>
     <li><a href="#">Packets</a></li>
+    <li><a href="#" style="background-color: red">ADMIN</a></li>
     <li style="float:right; font-weight: bold;"><a href="/user/register">Register</a></li>
     <li style="float:right; font-weight: bold;"><a href="/user/login">Log in</a></li>
 
@@ -26,6 +27,10 @@
 <form th:action="@{/contracts/user/add}"
       th:object="${contractUserBindingDto}" method="POST">
     <label style="font-size: 15px"><b>User Contract:</b></label><br><br>
+
+    <label style="margin-top: 40px"><b>Subscriber Username</b></label>
+    <input type="text" placeholder="Enter Username" th:field="*{username}">
+
     <label style="margin-top: 40px"><b>Packet Name</b></label>
     <input type="text" placeholder="Enter Packet Name" th:field="*{packetNames}">
 

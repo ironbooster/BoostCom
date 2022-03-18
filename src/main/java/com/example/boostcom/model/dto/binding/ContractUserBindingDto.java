@@ -7,17 +7,27 @@ import java.time.LocalDate;
 import java.util.List;
 
 public class ContractUserBindingDto {
-
-    @DateTimeFormat(pattern = "yyyy-MM-dd")
-    private LocalDate startDate;
-    @DateTimeFormat(pattern = "yyyy-MM-dd")
-    private LocalDate expireDate;
+    @NotNull
+    private String username;
     @NotNull
     private List<String> packetNames;
     @NotNull
     private List<String> channelNames;
     @NotNull
     private List<String> packetCategory;
+    @DateTimeFormat(pattern = "yyyy-MM-dd")
+    private LocalDate startDate;
+    @DateTimeFormat(pattern = "yyyy-MM-dd")
+    private LocalDate expireDate;
+
+    public String getUsername() {
+        return username;
+    }
+
+    public ContractUserBindingDto setUsername(String username) {
+        this.username = username;
+        return this;
+    }
 
     public LocalDate getStartDate() {
         return startDate;

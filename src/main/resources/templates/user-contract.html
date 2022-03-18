@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>BoostCom</title>
+    <link rel="icon" type="image/x-icon" th:href="@{/img/logoic.png}">
+    <link th:href="@{/css/nav.css}" rel="stylesheet">
+    <link th:href="@{/css/table.css}" rel="stylesheet">
+
+</head>
+<body>
+
+<ul style="text-decoration: none">
+    <li><a href="/">Home</a></li>
+    <li><a class="active" href="/contracts/selection">Contracts</a></li>
+    <li><a href="#">Providers</a></li>
+    <li><a href="#">Channels</a></li>
+    <li><a href="#">Packets</a></li>
+    <li style="float:right; font-weight: bold;"><a href="/user/register">Register</a></li>
+    <li style="float:right; font-weight: bold;"><a href="/user/login">Log in</a></li>
+
+</ul>
+
+
+    <form action="/contracts/user/add" method="GET" style="position: absolute; top: 148px;left:65%;">
+        <button type="submit">New User Contract</button>
+    </form>
+<table style="margin-top:200px">
+    <tr>
+        <th>Username</th>
+        <th>User Contract</th>
+
+        </tr>
+    <tr th:each ="user : ${userContracts}">
+        <td th:text="${user.username}"></td>
+        <td><table><tr>
+            <th>ID</th>
+            <th>Price</th>
+            <th>Start Date</th>
+            <th>Expire Date</th>
+        </tr>
+            <tr th:each="contract : ${user.contract}">
+                <td th:text="${contract.id}"></td>
+                <td th:text="${contract.price}"></td>
+                <td th:text="${contract.dateStarted}"></td>
+                <td th:text="${contract.dateExpire}"></td>
+                <td><a th:href="'/' + ${contract.id}" style="color: red">✏</a></td>
+                <td><a th:href="'/' + ${contract.id}">🗑️</a></td>
+            </tr>
+        </table>
+ </table>
+</body>
+</html>

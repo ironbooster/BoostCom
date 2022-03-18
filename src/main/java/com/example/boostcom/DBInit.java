@@ -9,6 +9,7 @@ import org.springframework.stereotype.Component;
 
 import javax.transaction.Transactional;
 import java.util.List;
+import java.util.Optional;
 
 @Component
 public class DBInit implements CommandLineRunner {
@@ -53,9 +54,11 @@ public class DBInit implements CommandLineRunner {
     }
     private void contractUser(){
         ContractUserEntity contractUser = new ContractUserEntity();
+        Optional<UserEntity> user1 = userRepository.findByUsername("iv_d");
         contractUser.setPrice(123).setPacketEntities(List.of(packetRepository.getById(1L)));
         contractUserRepository.save(contractUser);
-
+        List<ContractUserEntity> contractsss = contractUserRepository.findAll();
+        user1.get().setContract(contractsss);
     }
     private void  userRegister(){
         UserRoleEntity userrole = new UserRoleEntity();
@@ -63,7 +66,7 @@ public class DBInit implements CommandLineRunner {
         userRoleRepository.save(userrole);
         UserEntity user = new UserEntity();
         userrole.setRole(UserRoleEnum.Admin);
-        user.setEmail("asdasd@abv.bg").setFirstName("Ivailo")
+        user.setEmail("asas@abv.bg").setFirstName("Ivailo")
                 .setUsername("iv_d").setPassword("asd123").setLastName("Aleksandrov")
                 .setRoles(List.of(userrole));
         userRepository.save(user);
@@ -96,11 +99,11 @@ public class DBInit implements CommandLineRunner {
         channe2.setPrice(2).setChannelName("Discovery").setChannelCategoryEnum(CategoryEnum.Scientific);
         channelRepository.save(channe2);
         ContractProviderEntity contractProvider = new ContractProviderEntity();
-        contractProvider.setProviderEntity(providerEntity)
+        contractProvider.setPrice(1500.40).setProviderEntity(providerEntity)
                 .setChannelEntityList(List.of(channel));
         contractProviderRepository.save(contractProvider);
         ContractProviderEntity contractProvider1 = new ContractProviderEntity();
-        contractProvider1.setProviderEntity(providerEntity)
+        contractProvider1.setProviderEntity(providerEntity).setPrice(2000)
                 .setChannelEntityList(List.of(channe2));
         contractProviderRepository.save(contractProvider1);
 
