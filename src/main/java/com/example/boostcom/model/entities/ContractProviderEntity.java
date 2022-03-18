@@ -11,9 +11,9 @@ public class ContractProviderEntity {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
-    @Column(nullable = false,name = "started")
+    @Column(name = "started")
     private LocalDate dateStarted;
-    @Column(nullable = false,name = "expire")
+    @Column(name = "expire")
     private LocalDate dateExpire;
     @Column(nullable = false,name = "price")
     private double price;
@@ -37,6 +37,15 @@ public class ContractProviderEntity {
     public ContractProviderEntity setDateExpire(LocalDate dateExpire) {
         this.dateExpire = dateExpire;
         return this;
+    }
+
+    public ContractProviderEntity setPrice(double price) {
+        this.price = price;
+        return this;
+    }
+
+    public double getPrice() {
+        return price;
     }
 
     public ContractProviderEntity setProviderEntity(ProviderEntity providerEntity) {

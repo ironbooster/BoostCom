@@ -11,9 +11,9 @@ public class ContractUserEntity {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
-    @Column(nullable = false,name = "started")
+    @Column(name = "started")
     private LocalDate dateStarted;
-    @Column(nullable = false,name = "expired")
+    @Column(name = "expired")
     private LocalDate dateExpire;
     @Column(nullable = false,name = "price")
     private double price;
