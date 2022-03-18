@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>BoostCom</title>
+    <link rel="icon" type="image/x-icon" th:href="@{/img/logoic.png}">
+    <link th:href="@{/css/nav.css}" rel="stylesheet">
+    <link th:href="@{/css/buttons.css}" rel="stylesheet">
+    <link th:href="@{/css/forms.css}" rel="stylesheet">
+
+
+</head>
+<body>
+
+<ul style="text-decoration: none">
+    <li><a href="/">Home</a></li>
+    <li><a class="active" href="/contracts/selection">Contracts</a></li>
+    <li><a href="#">Providers</a></li>
+    <li><a href="#">Channels</a></li>
+    <li><a href="#">Packets</a></li>
+    <li style="float:right; font-weight: bold;"><a href="/user/register">Register</a></li>
+    <li style="float:right; font-weight: bold;"><a href="/user/login">Log in</a></li>
+
+</ul>
+
+<form th:action="@{/contracts/user/add}"
+      th:object="${contractUserBindingDto}" method="POST">
+    <label style="font-size: 15px"><b>User Contract:</b></label><br><br>
+    <label style="margin-top: 40px"><b>Packet Name</b></label>
+    <input type="text" placeholder="Enter Packet Name" th:field="*{packetNames}">
+
+    <label style="margin-top: 40px"><b>Packet by Category</b></label>
+    <input type="text" placeholder="Enter Packet Category" th:field="*{packetCategory}">
+
+    <label style="margin-top: 40px"><b>Channel Name</b></label>
+    <input type="text" placeholder="Enter Channel Name" th:field="*{channelNames}">
+
+    <label><b>Start Date</b></label>
+    <input type="date" min="2022-01-01" max="2023-01-01" th:field="*{startDate}"><br>
+
+    <label><b>Expire Date</b></label>
+    <input type="date" min="2022-01-01" max="2023-01-01" th:field="*{expireDate}">
+
+
+    <button type="submit">Create Provider Contract</button>
+</form>
+
+
+</body>
+</html>

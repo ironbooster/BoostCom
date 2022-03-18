@@ -23,26 +23,58 @@
 
 </ul>
 
-<img style="width:250px;display:block;
-  margin-left: auto;
-  margin-right: auto;" th:src="@{/img/boostcomLogo.png}"   alt="img"/>
-
-
 <form th:action="@{/contracts/provider/add}"
  th:object="${contractProviderBindingDto}" method="POST">
-
-<label><b>Provider Name</b></label>
+    <label style="font-size: 15px"><b>Provider Contract:</b></label><br><br>
+<label style="margin-top: 40px"><b>Provider Name</b></label>
 <input type="text" placeholder="Enter Provider Name" th:field="*{providerName}">
+    <label><b>Contract Price</b></label>
+    <input type="number" min="0" step="0.1" th:field="*{contractPrice}"><br>
+
+    <label><b>Chanel</b></label>
+    <input type="text" placeholder="Enter Channel Name" th:field="*{channels}"><br>
+    <label><b>Category</b></label>
+    <select name="categorys">
+        <option disabled selected value> -- select a category -- </option>
+        <option th:each="anCategory: ${categories}"
+                th:text="${anCategory}"
+                th:value="${anCategory}"
+                th:selected="${anCategory} == *{category}">
+            Category
+        </option>
+    </select><br>
+
+    <label><b>Channel Price</b></label>
+    <input type="number" min="0" step="0.1" th:field="*{channelPrices}"><br>
+
+    <label ><b>Chanel</b></label>
+    <input type="text" placeholder="Enter Channel Name" th:field="*{channels}">
+
+    <label><b>Category</b></label>
+    <select name="categorys">
+        <option disabled selected value> -- select a category -- </option>
+        <option th:each="anCategory: ${categories}"
+                th:text="${anCategory}"
+                th:value="${anCategory}"
+                th:selected="${anCategory} == *{category}">
+            Category
+        </option>
+    </select><br>
+
+    <label><b>Channel Price</b></label>
+    <input type="number" min="0" step="0.1" th:field="*{channelPrices}"><br><br>
 
     <label><b>Start Date</b></label>
     <input type="date" min="2022-01-01" max="2023-01-01" th:field="*{startDate}"><br>
 
-    <label style="margin-top: 10px"><b>Expire Date</b></label>
+    <label><b>Expire Date</b></label>
     <input type="date" min="2022-01-01" max="2023-01-01" th:field="*{expireDate}">
+
+
 
 <button type="submit">Create Provider Contract</button>
 </form>
 
 
 </body>
-</html>tml>
+</html>
