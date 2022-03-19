@@ -22,7 +22,8 @@
         <a class="active" href="/user/login">Log in</a></li>
 </ul>
 
-<form th:action="@{/user/login}" th:object="${userDto}" method="POST">
+<form th:action="@{/user/login}" th:object="${userDto}" method="POST" style="margin-left: auto;
+  margin-right: auto;margin-top: 100px;">
 
     <label><b>Username</b></label>
     <input type="text" placeholder="Enter Username" th:field="*{username}">

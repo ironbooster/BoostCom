@@ -25,7 +25,8 @@
 </ul>
 
 <form th:action="@{/contracts/user/add}"
-      th:object="${contractUserBindingDto}" method="POST">
+      th:object="${contractUserBindingDto}" method="POST" style="margin-left: auto;
+  margin-right: auto;margin-top: 100px;">
     <label style="font-size: 15px"><b>User Contract:</b></label><br><br>
 
     <label style="margin-top: 40px"><b>Subscriber Username</b></label>
@@ -47,7 +48,7 @@
     <input type="date" min="2022-01-01" max="2023-01-01" th:field="*{expireDate}">
 
 
-    <button type="submit">Create Provider Contract</button>
+    <button type="submit">Create User Contract</button>
 </form>
 
 

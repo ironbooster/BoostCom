@@ -25,9 +25,6 @@ import java.util.List;
 @RequestMapping("/contracts")
 public class ContractController {
 
-
-
-
     @Autowired
     ContractUserRepository contractUserRepository;
     @Autowired
@@ -39,15 +36,16 @@ public class ContractController {
     public ContractProviderBindingDto createContractProviderBinding() {
         return new ContractProviderBindingDto();
     }
-
     @ModelAttribute("contractUserBindingDto")
     public ContractUserBindingDto createContractUserBinding() {
         return new ContractUserBindingDto();
     }
+
     @GetMapping("/selection")
     public String contractSelection(){
         return "contract-select";
     }
+
 
     @GetMapping("/provider/add")
     public String addProviderContract(Model model){
@@ -55,21 +53,16 @@ public class ContractController {
         return "add-provider-contract";
     }
     @PostMapping("/provider/add")
-    public String addProviderContract(ContractProviderBindingDto
-                                                  contractProviderBindingDto){
-
+    public String addProviderContract(ContractProviderBindingDto contractProviderBindingDto){
         return "redirect:/contracts/selection";
     }
 
     @GetMapping("/user/add")
     public String addUserContract(Model model){
-
         return "add-user-contract";
     }
     @PostMapping("/user/add")
-    public String addUserContract(ContractUserBindingDto
-                                              contractUserBindingDto){
-
+    public String addUserContract(ContractUserBindingDto contractUserBindingDto){
         return "redirect:/contracts/user";
     }
 
@@ -77,14 +70,10 @@ public class ContractController {
     private String showUserContracts(Model model){
         model.addAttribute("userContracts",userRepository.findAll());
         return "user-contract";
-
     }
     @GetMapping("/provider")
     private String showProviderContracts(Model model){
         model.addAttribute("providerContracts",contractProviderRepository.findAll());
         return "provider-contract";
-
     }
-
-
 }
