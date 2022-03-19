@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>BoostCom</title>
+    <link rel="icon" type="image/x-icon" th:href="@{/img/logoic.png}">
+    <link th:href="@{/css/nav.css}" rel="stylesheet">
+    <link th:href="@{/css/table.css}" rel="stylesheet">
+
+</head>
+<body>
+
+<ul style="text-decoration: none">
+    <li><a href="/">Home</a></li>
+    <li><a href="/contracts/selection">Contracts</a></li>
+    <li><a href="#">Providers</a></li>
+    <li><a href="/channels/view">Channels</a></li>
+    <li><a class="active" href="/packets/all">Packets</a></li>
+    <li style="float:right; font-weight: bold;"><a href="/user/register">Register</a></li>
+    <li style="float:right; font-weight: bold;"><a href="/user/login">Log in</a></li>
+
+</ul>
+
+
+<table style="margin-top:200px">
+    <tr>
+        <th>Packet</th>
+        <th>Category</th>
+        <th>Channels</th>
+        <th>Price</th>
+
+    </tr>
+    <tr th:each ="packet : ${packets}">
+        <td th:text="${packet.name}"></td>
+        <td th:text="${packet.categoryEnum}"></td>
+        <td><table style="width: 300px">
+            <tr>
+                <th>Channel</th>
+                <th>Category</th>
+            </tr>
+            <tr th:each="channel : ${packet.channels}">
+                <td th:text="${channel.channelName}"></td>
+                <td th:text="${channel.channelCategoryEnum}"></td>
+            </tr>
+        </table>
+        </td>
+        <td th:text="' лв'"></td>
+        <td><a th:href="'/' + ${packet.id}" style="color: red">✏</a></td>
+        <td><a th:href="'/' + ${packet.id}">🗑️</a></td>
+
+    </tr>
+</table>
+</body>
+</html>

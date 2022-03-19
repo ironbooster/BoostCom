@@ -5,26 +5,36 @@
     <title>BoostCom</title>
     <link rel="icon" type="image/x-icon" th:href="@{/img/logoic.png}">
     <link th:href="@{/css/nav.css}" rel="stylesheet">
-    <link th:href="@{/css/buttons.css}" rel="stylesheet">
+    <link th:href="@{/css/table.css}" rel="stylesheet">
 
 </head>
 <body>
 
 <ul style="text-decoration: none">
     <li><a href="/">Home</a></li>
-    <li><a class="active"  href="/contracts/selection">Contracts</a></li>
+    <li><a href="/contracts/selection">Contracts</a></li>
     <li><a href="#">Providers</a></li>
-    <li><a href="/channels/view">Channels</a></li>
+    <li><a class="active" href="/channels/view">Channels</a></li>
     <li><a href="/packets/all">Packets</a></li>
     <li style="float:right; font-weight: bold;"><a href="/user/register">Register</a></li>
     <li style="float:right; font-weight: bold;"><a href="/user/login">Log in</a></li>
 
 </ul>
-<img style="width:250px;display:block;
-  margin-left: auto;
-  margin-right: auto;" th:src="@{/img/boostcomLogo.png}"   alt="img"/>
-<a href="/contracts/provider"><button style="width: 230px"> Provider Contract</button></a>
-<a href="/contracts/user"><button style="width: 230px">  User Contract  </button></a>
 
+
+<table style="margin-top:200px">
+    <tr>
+        <th>Channel</th>
+        <th>Category</th>
+        <th>Price</th>
+
+    </tr>
+    <tr th:each ="channel : ${channels}">
+        <td th:text="${channel.channelName}"></td>
+        <td th:text="${channel.channelCategoryEnum}"></td>
+        <td th:text="${channel.price}+' лв'"></td>
+
+    </tr>
+</table>
 </body>
 </html>

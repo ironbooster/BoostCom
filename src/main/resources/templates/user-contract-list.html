@@ -14,8 +14,8 @@
     <li><a href="/">Home</a></li>
     <li><a class="active" href="/contracts/selection">Contracts</a></li>
     <li><a href="#">Providers</a></li>
-    <li><a href="#">Channels</a></li>
-    <li><a href="#">Packets</a></li>
+    <li><a href="/channels/view">Channels</a></li>
+    <li><a href="/packets/all">Packets</a></li>
     <li style="float:right; font-weight: bold;"><a href="/user/register">Register</a></li>
     <li style="float:right; font-weight: bold;"><a href="/user/login">Log in</a></li>
 
@@ -41,7 +41,7 @@
         </tr>
             <tr th:each="contract : ${user.contract}">
                 <td th:text="${contract.id}"></td>
-                <td th:text="${contract.price}"></td>
+                <td th:text="${contract.price}+' лв'"></td>
                 <td th:text="${contract.dateStarted}"></td>
                 <td th:text="${contract.dateExpire}"></td>
                 <td><a th:href="'/' + ${contract.id}" style="color: red">✏</a></td>

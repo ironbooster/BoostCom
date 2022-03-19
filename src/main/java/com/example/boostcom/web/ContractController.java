@@ -2,10 +2,6 @@ package com.example.boostcom.web;
 
 import com.example.boostcom.model.dto.binding.ContractProviderBindingDto;
 import com.example.boostcom.model.dto.binding.ContractUserBindingDto;
-import com.example.boostcom.model.dto.user.UserRegisterDto;
-import com.example.boostcom.model.entities.ContractProviderEntity;
-import com.example.boostcom.model.entities.ProviderEntity;
-import com.example.boostcom.model.entities.UserEntity;
 import com.example.boostcom.model.entities.enums.CategoryEnum;
 import com.example.boostcom.repository.ContractProviderRepository;
 import com.example.boostcom.repository.ContractUserRepository;
@@ -17,8 +13,6 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
-
-import java.util.List;
 
 
 @Controller
@@ -69,11 +63,11 @@ public class ContractController {
     @GetMapping("/user")
     private String showUserContracts(Model model){
         model.addAttribute("userContracts",userRepository.findAll());
-        return "user-contract";
+        return "user-contract-list";
     }
     @GetMapping("/provider")
     private String showProviderContracts(Model model){
         model.addAttribute("providerContracts",contractProviderRepository.findAll());
-        return "provider-contract";
+        return "provider-contract-list";
     }
 }

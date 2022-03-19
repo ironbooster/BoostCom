@@ -14,8 +14,8 @@
     <li><a href="/">Home</a></li>
     <li><a class="active" href="/contracts/selection">Contracts</a></li>
     <li><a href="#">Providers</a></li>
-    <li><a href="#">Channels</a></li>
-    <li><a href="#">Packets</a></li>
+    <li><a href="/channels/view">Channels</a></li>
+    <li><a href="/packets/all">Packets</a></li>
     <li style="float:right; font-weight: bold;"><a href="/user/register">Register</a></li>
     <li style="float:right; font-weight: bold;"><a href="/user/login">Log in</a></li>
 
@@ -45,7 +45,7 @@
         </tr>
             <tr th:each="channel : ${contract.channelEntityList}">
                 <td th:text="${channel.channelName}"></td>
-                <td th:text="${channel.price}"></td>
+                <td th:text="${channel.price}+' лв'"></td>
                 <td th:text="${channel.channelCategoryEnum}"></td>
             </tr>
         </table>
