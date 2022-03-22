@@ -1,5 +1,6 @@
 package com.example.boostcom.model.dto.binding;
 
+import com.example.boostcom.model.dto.ChannelDto;
 import com.example.boostcom.model.entities.enums.CategoryEnum;
 import org.springframework.format.annotation.DateTimeFormat;
 
@@ -22,8 +23,7 @@ public class ContractProviderBindingDto {
     @NotNull
     private List<Double> channelPrices;
     @NotNull
-    private CategoryEnum category;
-
+    private List<CategoryEnum> category;
 
     public double getContractPrice() {
         return contractPrice;
@@ -34,11 +34,11 @@ public class ContractProviderBindingDto {
         return this;
     }
 
-    public CategoryEnum getCategory() {
+    public List<CategoryEnum> getCategory() {
         return category;
     }
 
-    public ContractProviderBindingDto setCategory(CategoryEnum category) {
+    public ContractProviderBindingDto setCategory(List<CategoryEnum> category) {
         this.category = category;
         return this;
     }
