@@ -28,22 +28,26 @@
     <label style="font-size: 15px"><b>User Contract:</b></label><br><br>
 
     <label style="margin-top: 40px"><b>Subscriber Username</b></label>
-    <input type="text" placeholder="Enter Username" th:field="*{username}">
+    <input type="text" placeholder="Enter Username" th:field="*{username}"><br>
 
-    <label style="margin-top: 40px"><b>Packet Name</b></label>
-    <input type="text" placeholder="Enter Packet Name" th:field="*{packetNames}">
+    <label style="margin-top: 40px"><b>Packet Name</b></label><br>
+    <input th:each="packet : ${packetList}"
+           type="checkbox" th:value="packet.name"
+           th:field="*{packets}"
+           th:text="${packet.name}"><br>
 
-    <label style="margin-top: 40px"><b>Packet by Category</b></label>
-    <input type="text" placeholder="Enter Packet Category" th:field="*{packetCategory}">
+    <label style="margin-top: 40px"><b>Packet by Category</b></label><br>
+    <input th:each="packet : ${packetList}"
+           type="checkbox" th:value="packet.name"
+           th:field="*{packets}"
+           th:text="${packet.name}"><br>
 
-    <label style="margin-top: 40px"><b>Channel Name</b></label>
-    <input type="text" placeholder="Enter Channel Name" th:field="*{channelNames}">
 
     <label><b>Start Date</b></label>
-    <input type="date" min="2022-01-01" max="2023-01-01" th:field="*{startDate}"><br>
+    <input type="date" min="2022-01-01" max="2023-01-01" th:field="*{dateStarted}"><br>
 
     <label><b>Expire Date</b></label>
-    <input type="date" min="2022-01-01" max="2023-01-01" th:field="*{expireDate}">
+    <input type="date" min="2022-01-01" max="2023-01-01" th:field="*{dateExpire}">
 
 
     <button type="submit">Create User Contract</button>

@@ -1,24 +1,23 @@
 package com.example.boostcom.model.dto.binding;
 
+import net.bytebuddy.implementation.bind.annotation.Empty;
 import org.springframework.format.annotation.DateTimeFormat;
 
+import javax.validation.constraints.NotEmpty;
 import javax.validation.constraints.NotNull;
 import java.time.LocalDate;
 import java.util.List;
 
 public class ContractUserBindingDto {
-    @NotNull
+    @NotEmpty
     private String username;
-    @NotNull
-    private List<String> packetNames;
-    @NotNull
-    private List<String> channelNames;
-    @NotNull
-    private List<String> packetCategory;
+    @NotEmpty
+    private List<String> packets;
     @DateTimeFormat(pattern = "yyyy-MM-dd")
-    private LocalDate startDate;
+    private LocalDate dateStarted;
     @DateTimeFormat(pattern = "yyyy-MM-dd")
-    private LocalDate expireDate;
+    private LocalDate dateExpire;
+
 
     public String getUsername() {
         return username;
@@ -29,48 +28,33 @@ public class ContractUserBindingDto {
         return this;
     }
 
-    public LocalDate getStartDate() {
-        return startDate;
+    public List<String> getPackets() {
+        return packets;
     }
 
-    public ContractUserBindingDto setStartDate(LocalDate startDate) {
-        this.startDate = startDate;
+    public ContractUserBindingDto setPackets(List<String> packets) {
+        this.packets = packets;
         return this;
     }
 
-    public LocalDate getExpireDate() {
-        return expireDate;
+    public LocalDate getDateStarted() {
+        return dateStarted;
     }
 
-    public ContractUserBindingDto setExpireDate(LocalDate expireDate) {
-        this.expireDate = expireDate;
+    public ContractUserBindingDto setDateStarted(LocalDate dateStarted) {
+        this.dateStarted = dateStarted;
         return this;
     }
 
-    public List<String> getPacketNames() {
-        return packetNames;
+    public LocalDate getDateExpire() {
+        return dateExpire;
     }
 
-    public ContractUserBindingDto setPacketNames(List<String> packetNames) {
-        this.packetNames = packetNames;
-        return this;
-    }
-
-    public List<String> getChannelNames() {
-        return channelNames;
-    }
-
-    public ContractUserBindingDto setChannelNames(List<String> channelNames) {
-        this.channelNames = channelNames;
-        return this;
-    }
-
-    public List<String> getPacketCategory() {
-        return packetCategory;
-    }
-
-    public ContractUserBindingDto setPacketCategory(List<String> packetCategory) {
-        this.packetCategory = packetCategory;
+    public ContractUserBindingDto setDateExpire(LocalDate dateExpire) {
+        this.dateExpire = dateExpire;
         return this;
     }
 }
+
+
+

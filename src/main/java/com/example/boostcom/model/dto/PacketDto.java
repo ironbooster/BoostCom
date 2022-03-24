@@ -1,10 +1,15 @@
 package com.example.boostcom.model.dto;
 
+import com.example.boostcom.model.entities.enums.CategoryEnum;
+
+import javax.validation.constraints.NotBlank;
+import javax.validation.constraints.NotEmpty;
 import java.util.List;
 
 public class PacketDto {
-
+    @NotEmpty
     private String name;
+    @NotEmpty
     private List<String> channels;
 
 
