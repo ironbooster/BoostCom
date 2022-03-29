@@ -1,6 +1,7 @@
 package com.example.boostcom.model.entities;
 
 import javax.persistence.*;
+import java.util.ArrayList;
 import java.util.List;
 
 @Entity
@@ -20,15 +21,15 @@ public class UserEntity {
     @Column(nullable = false)
     private String password;
 
-    @OneToMany
+    @OneToMany(cascade=CascadeType.ALL)
     @JoinColumn(name = "user_id")
-    private List<ContractUserEntity> contract;
+    private List<ContractUserEntity> contract= new ArrayList<>();
     @ManyToMany(fetch = FetchType.EAGER)
     @JoinTable(
             name = "user_roles",
             joinColumns = @JoinColumn(name = "user_id"),
             inverseJoinColumns = @JoinColumn(name = "role_id"))
-    private List<UserRoleEntity> roles;
+    private List<UserRoleEntity> roles = new ArrayList<>();
 
     public UserEntity setId(Long id) {
         this.id = id;

@@ -38,7 +38,7 @@
 
     <label style="margin-top: 40px"><b>Packet by Category</b></label><br>
     <input th:each="packet : ${packetList}"
-           type="checkbox" th:value="packet.name"
+           type="checkbox" th:value="${packet.name}"
            th:field="*{packets}"
            th:text="${packet.name}"><br>
 

@@ -32,7 +32,7 @@
 
     <label style="font-size: 15px"><b>Channels</b> </label><br>
     <input th:each="channel : ${channels}"
-               type="checkbox" th:value="channel.name"
+               type="checkbox" th:value="${channel.channelName}"
                th:field="*{channels}"
                th:text="${channel.channelName}">
 

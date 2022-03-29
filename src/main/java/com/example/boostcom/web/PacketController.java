@@ -1,9 +1,9 @@
 package com.example.boostcom.web;
 
-import com.example.boostcom.model.dto.PacketDto;
-import com.example.boostcom.model.dto.binding.ContractProviderBindingDto;
+import com.example.boostcom.model.dto.binding.PacketBindingDto;
 import com.example.boostcom.repository.ChannelRepository;
 import com.example.boostcom.repository.PacketRepository;
+import com.example.boostcom.service.PacketService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -23,15 +23,19 @@ public class PacketController {
     PacketRepository packetRepository;
     @Autowired
     ChannelRepository channelRepository;
+    @Autowired
+    PacketService packetService;
 
     @ModelAttribute("packetDto")
-    public PacketDto createPacketDto() {
-        return new PacketDto();
+    public PacketBindingDto createPacketDto() {
+        return new PacketBindingDto();
     }
 
     @GetMapping("/all")
     public String contractSelection(Model model){
         model.addAttribute("packets",packetRepository.findAll());
+        //model.addAttribute("packetPrice",);
+        //tuk trqbva i da sloja sumata na kanalite v paketa ;)
         return "packets-list";
     }
 
@@ -42,10 +46,10 @@ public class PacketController {
     }
 
     @PostMapping("/add")
-    public String createPacket(@Valid PacketDto packetDto, BindingResult bindingResult,
+    public String createPacket(@Valid PacketBindingDto packetDto, BindingResult bindingResult,
                                RedirectAttributes redirectAttributes){
 
-
+        packetService.save(packetDto);
         return "redirect:/packets/all";
     }
 }

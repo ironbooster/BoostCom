@@ -11,7 +11,7 @@ public class PacketEntity {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
-    @Column(nullable = true)
+
     @Enumerated(EnumType.STRING)
     private CategoryEnum categoryEnum;
     @Column(nullable = false)

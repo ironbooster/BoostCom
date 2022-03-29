@@ -6,6 +6,7 @@ import com.example.boostcom.model.entities.ContractProviderEntity;
 import com.example.boostcom.model.entities.enums.CategoryEnum;
 import com.example.boostcom.repository.*;
 import com.example.boostcom.service.ContractProviderService;
+import com.example.boostcom.service.ContractUserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -34,6 +35,8 @@ public class ContractController {
     ContractProviderService contractProviderService;
     @Autowired
     PacketRepository packetRepository;
+    @Autowired
+    ContractUserService contractUserService;
 
     @ModelAttribute("contractProviderBindingDto")
     public ContractProviderBindingDto createContractProviderBinding() {
@@ -74,6 +77,7 @@ public class ContractController {
     public String addUserContract(@Valid ContractUserBindingDto contractUserBindingDto,
                                   BindingResult bindingResult,
                                   RedirectAttributes redirectAttributes){
+      contractUserService.save(contractUserBindingDto);
 
 
         return "redirect:/contracts/user";
@@ -86,7 +90,6 @@ public class ContractController {
     }
     @GetMapping("/provider")
     private String showProviderContracts(Model model){
-        List<ContractProviderEntity> contractProviderEntities = contractProviderRepository.findAll();
         model.addAttribute("providerContracts",contractProviderRepository.findAll());
         return "provider-contract-list";
     }

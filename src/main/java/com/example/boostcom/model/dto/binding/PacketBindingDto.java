@@ -1,24 +1,21 @@
-package com.example.boostcom.model.dto;
+package com.example.boostcom.model.dto.binding;
 
-import com.example.boostcom.model.entities.enums.CategoryEnum;
-
-import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.NotEmpty;
 import java.util.List;
 
-public class PacketDto {
+public class PacketBindingDto {
     @NotEmpty
     private String name;
     @NotEmpty
     private List<String> channels;
 
 
-    public PacketDto setChannels(List<String> channels) {
+    public PacketBindingDto setChannels(List<String> channels) {
         this.channels = channels;
         return this;
     }
 
-    public PacketDto setName(String name) {
+    public PacketBindingDto setName(String name) {
         this.name = name;
         return this;
     }

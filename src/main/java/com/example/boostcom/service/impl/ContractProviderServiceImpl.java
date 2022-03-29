@@ -6,7 +6,6 @@ import com.example.boostcom.model.entities.ContractProviderEntity;
 import com.example.boostcom.model.entities.ProviderEntity;
 import com.example.boostcom.repository.ChannelRepository;
 import com.example.boostcom.repository.ContractProviderRepository;
-import com.example.boostcom.repository.ContractUserRepository;
 import com.example.boostcom.repository.ProviderRepository;
 import com.example.boostcom.service.ContractProviderService;
 import org.modelmapper.ModelMapper;
