@@ -1,7 +1,6 @@
 package com.example.boostcom.service.impl;
 
 import com.example.boostcom.model.dto.binding.PacketBindingDto;
-import com.example.boostcom.model.dto.view.PacketViewModel;
 import com.example.boostcom.model.entities.ChannelEntity;
 import com.example.boostcom.model.entities.PacketEntity;
 import com.example.boostcom.model.entities.enums.CategoryEnum;
@@ -27,19 +26,6 @@ public class PacketServiceImpl implements PacketService {
         this.modelMapper = modelMapper;
         this.packetRepository = packetRepository;
         this.channelRepository = channelRepository;
-    }
-
-
-    @Override
-    public List<PacketViewModel> getAllPackets() {
-
-        return  packetRepository.findAll()
-                .stream()
-                .map(packetEntity ->
-                    modelMapper.map(packetEntity,
-                           PacketViewModel.class)
-
-                ).collect(Collectors.toList());
     }
 
     @Override

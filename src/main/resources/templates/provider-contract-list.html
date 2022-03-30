@@ -37,7 +37,7 @@
     </tr>
     <tr th:each ="contract : ${providerContracts}">
         <td th:text="${contract.providerEntity.providerName}"></td>
-        <td th:text="${contract.price}"></td>
+        <td th:text="${contract.price} +' лв'"></td>
         <td><table><tr>
             <th>Channel</th>
             <th>Price</th>
