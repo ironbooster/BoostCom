@@ -3,14 +3,17 @@ package com.example.boostcom.service.impl;
 import com.example.boostcom.model.dto.binding.ContractProviderBindingDto;
 import com.example.boostcom.model.entities.ChannelEntity;
 import com.example.boostcom.model.entities.ContractProviderEntity;
+import com.example.boostcom.model.entities.PacketEntity;
 import com.example.boostcom.model.entities.ProviderEntity;
 import com.example.boostcom.repository.ChannelRepository;
 import com.example.boostcom.repository.ContractProviderRepository;
+import com.example.boostcom.repository.PacketRepository;
 import com.example.boostcom.repository.ProviderRepository;
 import com.example.boostcom.service.ContractProviderService;
 import org.modelmapper.ModelMapper;
 import org.springframework.stereotype.Service;
 
+import javax.transaction.Transactional;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -19,10 +22,12 @@ public class ContractProviderServiceImpl implements ContractProviderService {
 
      private final ModelMapper modelMapper;
      private final ProviderRepository providerRepository;
+     private final PacketRepository packetRepository;
      private final ChannelRepository channelRepository;
      private final ContractProviderRepository contractProviderRepository;
 
     public ContractProviderServiceImpl(ModelMapper modelMapper,
+                                       PacketRepository packetRepository,
                                        ProviderRepository providerRepository,
                                        ChannelRepository channelRepository,
                                        ContractProviderRepository contractProviderRepository) {
@@ -30,6 +35,18 @@ public class ContractProviderServiceImpl implements ContractProviderService {
         this.providerRepository = providerRepository;
         this.channelRepository = channelRepository;
         this.contractProviderRepository = contractProviderRepository;
+        this.packetRepository=packetRepository;
+    }
+    @Transactional
+    @Override
+    public void deleteProviderContractById(long id) {
+        ContractProviderEntity contractProvider=contractProviderRepository.getById(id);
+        providerRepository.deleteById(contractProvider.getProviderEntity().getId());
+
+        for(ChannelEntity ch : contractProvider.getChannelEntityList()){
+        packetRepository.removeChannel(ch.getId());
+        }
+      contractProviderRepository.deleteById(id);
     }
 
     @Override

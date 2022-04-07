@@ -52,7 +52,8 @@
         <td th:text="${contract.dateStarted}"></td>
         <td th:text="${contract.dateExpire}"></td>
         <td><a th:href="'/' + ${contract.id}" style="color: red">✏</a></td>
-        <td><a th:href="'/' + ${contract.id}">🗑️</a></td>
+        <td><a th:href="@{/contracts/provider/{id}(id=${contract.id})}">🗑️</a></td>
+<!--        <a th:href="@{'/contracts/provider/'+${contract.id}}" type="button">-->
 </table>
 </body>
 </html>

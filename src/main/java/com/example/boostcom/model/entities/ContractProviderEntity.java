@@ -17,7 +17,7 @@ public class ContractProviderEntity {
     private LocalDate dateExpire;
     @Column(nullable = false,name = "price")
     private double price;
-    @OneToOne
+    @OneToOne(cascade = CascadeType.ALL,orphanRemoval = true)
     @JoinColumn(name = "provider_id")
     private ProviderEntity providerEntity;
     @OneToMany(cascade = CascadeType.ALL,orphanRemoval = true)
