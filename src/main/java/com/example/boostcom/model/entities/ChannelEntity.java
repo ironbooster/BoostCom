@@ -4,6 +4,7 @@ import com.example.boostcom.model.entities.enums.CategoryEnum;
 
 import javax.persistence.*;
 import java.math.BigDecimal;
+import java.text.DecimalFormat;
 
 @Entity
 @Table(name="channels")
@@ -51,6 +52,7 @@ public class ChannelEntity {
     public double getPrice() {
         return price;
     }
+
 
     public CategoryEnum getChannelCategoryEnum() {
         return channelCategoryEnum;

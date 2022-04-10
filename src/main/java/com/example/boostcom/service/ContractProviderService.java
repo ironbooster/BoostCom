@@ -7,4 +7,6 @@ public interface ContractProviderService {
     void saveProviderContract(ContractProviderBindingDto contractProviderBindingDto);
 
     void deleteProviderContractById(long id);
+    void discountChannelsPrice(int discPercentage);
+    void increaseChannelsPrice(int incPercentage);
 }

@@ -10,6 +10,16 @@
 </head>
 <body>
 
+
+<form  method="get" style="position: absolute; top: 107px;left:37%;">
+
+    <div style="margin-left: 70px"><label><b>Channel's Price Modification</b></label><br>
+    <input type="number" required th:name="Percentage">%</div>
+
+    <button type="submit" onclick="form.action='/channels/discount';">Discount</button>
+    <button type="submit" onclick="form.action='/channels/increase';">Increase</button>
+</form>
+
 <ul style="text-decoration: none">
     <li><a href="/">Home</a></li>
     <li><a href="/contracts/selection">Contracts</a></li>

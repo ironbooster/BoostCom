@@ -81,4 +81,15 @@ public class ContractProviderServiceImpl implements ContractProviderService {
         }
         return channelEntityList;
     }
+    @Transactional
+    @Override
+    public void discountChannelsPrice(int discPercentage) {
+         contractProviderRepository.discountChannelsPrice(discPercentage);
+    }
+
+    @Transactional
+    @Override
+    public void increaseChannelsPrice(int incPercentage) {
+        contractProviderRepository.increaseChannelsPrice(incPercentage);
+    }
 }
