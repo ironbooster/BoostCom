@@ -60,7 +60,7 @@ public class ContractController {
                                       BindingResult bindingResult,
                                       RedirectAttributes redirectAttributes){
 
-        contractProviderService.save(contractProviderBindingDto);
+        contractProviderService.saveProviderContract(contractProviderBindingDto);
         return "redirect:/contracts/provider";
     }
 
@@ -74,7 +74,7 @@ public class ContractController {
     public String addUserContract(@Valid ContractUserBindingDto contractUserBindingDto,
                                   BindingResult bindingResult,
                                   RedirectAttributes redirectAttributes){
-      contractUserService.save(contractUserBindingDto);
+      contractUserService.saveUserContract(contractUserBindingDto);
 
 
         return "redirect:/contracts/user";
@@ -90,12 +90,17 @@ public class ContractController {
         model.addAttribute("providerContracts",contractProviderRepository.findAll());
         return "provider-contract-list";
     }
-    @GetMapping("/provider/{id}")
-    public String delete(@PathVariable(name = "id") Long id){
+    @GetMapping("/provider/delete/{id}")
+    public String deleteProviderContract(@PathVariable(name = "id") Long id){
 
          contractProviderService.deleteProviderContractById(id);
 
         return "redirect:/contracts/provider";
+    }
+    @GetMapping("/user/delete/{id}")
+    public String deleteUserContract(@PathVariable(name="id")Long id){
+        contractUserService.deleteUserContractById(id);
+        return "redirect:/contracts/user";
     }
 
 }

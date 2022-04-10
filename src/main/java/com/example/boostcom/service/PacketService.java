@@ -6,6 +6,7 @@ import java.util.List;
 
 public interface PacketService {
 
-    void save(PacketBindingDto packetDto);
+    void savePacket(PacketBindingDto packetDto);
+    void deletePacket(Long id);
 
 }

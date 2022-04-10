@@ -34,8 +34,14 @@ public class ContractUserServiceImpl implements ContractUserService {
         this.contractUserRepository = contractUserRepository;
     }
 
+
     @Override
-    public void save(ContractUserBindingDto contractUserBindingDto) {
+    public void deleteUserContractById(Long id) {
+        contractUserRepository.deleteById(id);
+    }
+
+    @Override
+    public void saveUserContract(ContractUserBindingDto contractUserBindingDto) {
         ContractUserEntity contractUserEntity = modelMapper.map(contractUserBindingDto,
                 ContractUserEntity.class);
         contractUserEntity.setPacketEntities(packetEntityConverter(contractUserBindingDto));

@@ -5,14 +5,12 @@ import com.example.boostcom.model.dto.user.UserRegisterDto;
 import com.example.boostcom.model.entities.UserEntity;
 import com.example.boostcom.repository.UserRepository;
 import com.example.boostcom.repository.UserRoleRepository;
+import com.example.boostcom.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.ModelAttribute;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import javax.validation.Valid;
@@ -26,6 +24,8 @@ public class UserController {
     public UserRepository userRepository;
     @Autowired
     public UserRoleRepository userRoleRepository;
+    @Autowired
+    public UserService userService;
 
 
     @ModelAttribute("userRegisterDto")
@@ -64,12 +64,15 @@ public class UserController {
 
         return "redirect:/";
     }
-
-
-
     @GetMapping("/all")
     public String userList(Model model){
         model.addAttribute("users",userRepository.findAll());
         return "user-list";
+    }
+
+    @GetMapping("/delete/{id}")
+    public String deleteUser(@PathVariable(name = "id") Long id){
+         userService.deleteUser(id);
+        return "redirect:/user/all";
     }
 }

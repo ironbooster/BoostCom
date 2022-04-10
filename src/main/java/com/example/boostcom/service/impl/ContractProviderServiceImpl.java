@@ -50,7 +50,7 @@ public class ContractProviderServiceImpl implements ContractProviderService {
     }
 
     @Override
-    public void save(ContractProviderBindingDto contractProviderBindingDto) {
+    public void saveProviderContract(ContractProviderBindingDto contractProviderBindingDto) {
         ContractProviderEntity contractProviderEntity = modelMapper.
                 map(contractProviderBindingDto, ContractProviderEntity.class);
         contractProviderEntity.setDateStarted(contractProviderBindingDto.getStartDate());

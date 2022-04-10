@@ -5,11 +5,13 @@ import com.example.boostcom.model.entities.ChannelEntity;
 import com.example.boostcom.model.entities.PacketEntity;
 import com.example.boostcom.model.entities.enums.CategoryEnum;
 import com.example.boostcom.repository.ChannelRepository;
+import com.example.boostcom.repository.ContractUserRepository;
 import com.example.boostcom.repository.PacketRepository;
 import com.example.boostcom.service.PacketService;
 import org.modelmapper.ModelMapper;
 import org.springframework.stereotype.Service;
 
+import javax.transaction.Transactional;
 import java.util.List;
 import java.util.stream.Collectors;
 
@@ -19,17 +21,20 @@ public class PacketServiceImpl implements PacketService {
     private final ModelMapper modelMapper;
     private final PacketRepository packetRepository;
     private final ChannelRepository channelRepository;
+    private final ContractUserRepository contractUserRepository;
 
-    public PacketServiceImpl(ModelMapper modelMapper,
+    public PacketServiceImpl(ModelMapper modelMapper,ContractUserRepository contractUserRepository,
                              PacketRepository packetRepository,
                              ChannelRepository channelRepository) {
         this.modelMapper = modelMapper;
+        this.contractUserRepository=contractUserRepository;
         this.packetRepository = packetRepository;
         this.channelRepository = channelRepository;
+
     }
 
     @Override
-    public void save(PacketBindingDto packetDto) {
+    public void savePacket(PacketBindingDto packetDto) {
 
         PacketEntity packetEntity = modelMapper.map(packetDto, PacketEntity.class);
         packetEntity.setChannels(channelEntityConvert(packetDto.getChannels()));
@@ -42,5 +47,11 @@ public class PacketServiceImpl implements PacketService {
         return channels.stream().map(ch-> channelRepository
                 .findByChannelName(ch).orElse(null))
                 .collect(Collectors.toList());
+    }
+    @Transactional
+    @Override
+    public void deletePacket(Long id) {
+        contractUserRepository.removePacketFromContracts(id);
+        packetRepository.deleteById(id);
     }
 }

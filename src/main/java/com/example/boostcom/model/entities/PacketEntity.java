@@ -16,7 +16,7 @@ public class PacketEntity {
     private CategoryEnum categoryEnum;
     @Column(nullable = false)
     private String name;
-    @ManyToMany(fetch = FetchType.EAGER,cascade = CascadeType.ALL)
+    @ManyToMany(fetch = FetchType.EAGER)
     @JoinTable(
             name = "packet_channel",
             joinColumns = @JoinColumn(name = "packet_id"),

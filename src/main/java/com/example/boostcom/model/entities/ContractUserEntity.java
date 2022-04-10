@@ -17,7 +17,7 @@ public class ContractUserEntity {
     private LocalDate dateExpire;
     @Column(nullable = false,name = "price")
     private double price;
-    @ManyToMany
+    @ManyToMany(cascade = CascadeType.ALL)
     @JoinTable(
             name = "packet_user_contract",
             joinColumns = @JoinColumn(name = "contract_user_id"),

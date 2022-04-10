@@ -8,10 +8,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.ModelAttribute;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import javax.validation.Valid;
@@ -34,7 +31,7 @@ public class PacketController {
     @GetMapping("/all")
     public String contractSelection(Model model){
         model.addAttribute("packets",packetRepository.findAll());
-        //model.addAttribute("packetPrice",);
+        //model.addAttribute("packetPrice", );
         //tuk trqbva i da sloja sumata na kanalite v paketa ;)
         return "packets-list";
     }
@@ -49,7 +46,13 @@ public class PacketController {
     public String createPacket(@Valid PacketBindingDto packetDto, BindingResult bindingResult,
                                RedirectAttributes redirectAttributes){
 
-        packetService.save(packetDto);
+        packetService.savePacket(packetDto);
+        return "redirect:/packets/all";
+    }
+    @GetMapping("/delete/{id}")
+    public String deletePacket(@PathVariable(name = "id") Long id){
+
+        packetService.deletePacket(id);
         return "redirect:/packets/all";
     }
 }

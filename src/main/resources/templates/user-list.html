@@ -40,7 +40,7 @@
         </table>
         </td>
         <td><a th:href="'/' + ${user.id}" style="color: red">✏</a></td>
-        <td><a th:href="'/' + ${user.id}">🗑️</a></td>
+        <td><a th:href="@{/user/delete/{id}(id=${user.id})}">🗑️</a></td>
     </tr>
 </table>
 </body>
