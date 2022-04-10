@@ -23,7 +23,10 @@ public class PacketEntity {
             inverseJoinColumns = @JoinColumn(name = "channel_id"))
     private List<ChannelEntity> channels;
 
+    public double priceOfPacket(){
 
+      return channels.stream().mapToDouble(ChannelEntity::getPrice).sum();
+    }
     public CategoryEnum getCategoryEnum() {
         return categoryEnum;
     }

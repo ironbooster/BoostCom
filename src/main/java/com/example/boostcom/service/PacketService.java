@@ -7,6 +7,7 @@ import java.util.List;
 public interface PacketService {
 
     void savePacket(PacketBindingDto packetDto);
+    List<Double> getPacketPrice();
     void deletePacket(Long id);
 
 }

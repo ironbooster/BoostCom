@@ -31,8 +31,6 @@ public class PacketController {
     @GetMapping("/all")
     public String contractSelection(Model model){
         model.addAttribute("packets",packetRepository.findAll());
-        //model.addAttribute("packetPrice", );
-        //tuk trqbva i da sloja sumata na kanalite v paketa ;)
         return "packets-list";
     }
 

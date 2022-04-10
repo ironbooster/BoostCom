@@ -47,7 +47,7 @@
             </tr>
         </table>
         </td>
-        <td th:text="' лв'"></td>
+        <td th:text="${packet.priceOfPacket()}+' лв'"></td>
         <td><a th:href="'/' + ${packet.id}" style="color: red">✏</a></td>
         <td><a th:href="@{/packets/delete/{id}(id=${packet.id})}">🗑️</a></td>
 

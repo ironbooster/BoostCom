@@ -54,4 +54,13 @@ public class PacketServiceImpl implements PacketService {
         contractUserRepository.removePacketFromContracts(id);
         packetRepository.deleteById(id);
     }
+
+    @Override
+    public List<Double> getPacketPrice() {
+        List<PacketEntity> packetEntities = packetRepository.findAll();
+
+      return   packetEntities.stream()
+                .map(PacketEntity::priceOfPacket)
+                .collect(Collectors.toList());
+    }
 }
