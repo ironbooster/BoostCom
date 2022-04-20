@@ -35,6 +35,10 @@ public class PacketEntity {
         this.categoryEnum = categoryEnum;
         return this;
     }
+    public PacketEntity addChannel(ChannelEntity channel){
+        channels.add(channel);
+        return this;
+    }
 
     public PacketEntity setId(Long id) {
         this.id = id;

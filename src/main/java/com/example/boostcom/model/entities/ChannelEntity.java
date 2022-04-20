@@ -50,7 +50,8 @@ public class ChannelEntity {
     }
 
     public double getPrice() {
-        return price;
+
+        return Math.round(price * 100.0) / 100.0;
     }
 
 

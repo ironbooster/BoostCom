@@ -45,7 +45,7 @@ public class ContractProviderEntity {
     }
 
     public double getPrice() {
-        return price;
+        return Math.round(price * 100.0) / 100.0;
     }
 
     public ContractProviderEntity setProviderEntity(ProviderEntity providerEntity) {

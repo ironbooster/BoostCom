@@ -48,10 +48,12 @@ public class DBInit implements CommandLineRunner {
    packetCreation();
    userRegister();
    contractUser();
+   packetsByCategory();
 
 
 
     }
+
     private void contractUser(){
         ContractUserEntity contractUser = new ContractUserEntity();
         Optional<UserEntity> user1 = userRepository.findByUsername("iv_d");
@@ -108,5 +110,16 @@ public class DBInit implements CommandLineRunner {
         contractProviderRepository.save(contractProvider1);
 
 
+    }
+
+    public void packetsByCategory() {
+        for (CategoryEnum categoryEnum : CategoryEnum.values()) {
+            PacketEntity packetEntity = new PacketEntity();
+            List<ChannelEntity> channels = channelRepository.findByChannelCategoryEnum(categoryEnum);
+            packetEntity.setName(categoryEnum.toString()+" Packet");
+            packetEntity.setCategoryEnum(categoryEnum);
+            packetEntity.setChannels(channels);
+            packetRepository.save(packetEntity);
+        }
     }
 }

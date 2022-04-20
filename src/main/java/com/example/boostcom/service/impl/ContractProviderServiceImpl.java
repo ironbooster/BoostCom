@@ -78,6 +78,7 @@ public class ContractProviderServiceImpl implements ContractProviderService {
             channelEntity.setChannelCategoryEnum(contractProviderBindingDto.getCategory().get(i));
             channelRepository.save(channelEntity);
             channelEntityList.add(channelEntity);
+            saveChannelToEnumPacket(channelEntity);
         }
         return channelEntityList;
     }
@@ -91,5 +92,12 @@ public class ContractProviderServiceImpl implements ContractProviderService {
     @Override
     public void increaseChannelsPrice(int incPercentage) {
         contractProviderRepository.increaseChannelsPrice(incPercentage);
+    }
+    private void saveChannelToEnumPacket(ChannelEntity channel){
+       PacketEntity packet= packetRepository
+               .findByCategoryEnum(channel.getChannelCategoryEnum())
+               .orElseThrow();
+       packet.addChannel(channel);
+       packetRepository.save(packet);
     }
 }
