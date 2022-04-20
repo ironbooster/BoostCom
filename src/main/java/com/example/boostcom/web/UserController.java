@@ -75,4 +75,11 @@ public class UserController {
          userService.deleteUser(id);
         return "redirect:/user/all";
     }
+
+    @GetMapping("/update/{id}")
+    public String updateUser(@PathVariable(name = "id") Long id,Model model){
+        UserEntity user = userRepository.findById(id).orElseThrow();
+        model.addAttribute("userRegisterDto",user);
+        return "update-user";
+    }
 }

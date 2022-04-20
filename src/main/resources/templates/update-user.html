@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>BoostCom</title>
+    <link rel="icon" type="image/x-icon" th:href="@{/img/logoic.png}">
+    <link th:href="@{/css/nav.css}" rel="stylesheet">
+    <link th:href="@{/css/forms.css}" rel="stylesheet">
+
+</head>
+<body>
+<ul>
+    <li><a href="/">Home</a></li>
+    <li><a href="/contracts/selection">Contracts</a></li>
+    <li><a href="/channels/view">Channels</a></li>
+    <li><a href="/packets/all">Packets</a></li>
+    <li style="float:right; font-weight: bold;">
+        <a href="/user/register">Register</a></li>
+    <li style="float:right; font-weight: bold;">
+        <a href="/user/login">Log in</a></li>
+</ul>
+<form th:action="@{/user/register}" th:object="${userRegisterDto}" method="POST" style="margin-left: auto;
+  margin-right: auto;margin-top: 100px;">
+    <p><b>Edit User</b></p><hr>
+    <label><b>E-Mail</b></label>
+    <input type="text" placeholder="Enter E-Mail" th:field="*{email}" >
+
+    <label><b>Name</b></label>
+    <input type="text" placeholder="Enter First Name" th:field="*{firstName}">
+
+    <label><b>Last Name</b></label>
+    <input type="text" placeholder="Enter Last Name" th:field="*{lastName}">
+
+
+    <label><b>Username</b></label>
+    <input type="text" placeholder="Enter Username" name="username" th:field="*{username}">
+
+    <button type="submit">Edit</button>
+</form>
+
+
+</body>
+</html>

@@ -39,7 +39,7 @@
             </tr>
         </table>
         </td>
-        <td><a th:href="'/' + ${user.id}" style="color: red">✏</a></td>
+        <td><a th:href="@{/user/update/{id}(id=${user.id})}" style="color: red">✏</a></td>
         <td><a th:href="@{/user/delete/{id}(id=${user.id})}">🗑️</a></td>
     </tr>
 </table>
