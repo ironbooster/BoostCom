@@ -3,6 +3,7 @@ package com.example.boostcom.web;
 import com.example.boostcom.model.dto.binding.ContractProviderBindingDto;
 import com.example.boostcom.model.dto.binding.ContractUserBindingDto;
 import com.example.boostcom.model.entities.ContractProviderEntity;
+import com.example.boostcom.model.entities.PacketEntity;
 import com.example.boostcom.model.entities.enums.CategoryEnum;
 import com.example.boostcom.repository.*;
 import com.example.boostcom.service.ContractProviderService;
@@ -16,6 +17,8 @@ import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import javax.validation.Valid;
 import java.util.List;
+import java.util.Optional;
+import java.util.stream.Collectors;
 
 
 @Controller
@@ -67,7 +70,10 @@ public class ContractController {
     @GetMapping("/user/add")
     public String addUserContract(Model model){
 
-        model.addAttribute("packetList",packetRepository.findAll());
+        model.addAttribute("packetList",packetRepository
+                .findAll().stream()
+                .filter(packetEntity -> !packetEntity.getChannels().isEmpty())
+                .collect(Collectors.toList()));
         return "add-user-contract";
     }
     @PostMapping("/user/add")

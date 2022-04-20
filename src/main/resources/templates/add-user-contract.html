@@ -30,13 +30,7 @@
     <label style="margin-top: 40px"><b>Subscriber Username</b></label>
     <input type="text" placeholder="Enter Username" th:field="*{username}"><br>
 
-    <label style="margin-top: 40px"><b>Packet Name</b></label><br>
-    <input th:each="packet : ${packetList}"
-           type="checkbox" th:value="packet.name"
-           th:field="*{packets}"
-           th:text="${packet.name}"><br>
-
-    <label style="margin-top: 40px"><b>Packet by Category</b></label><br>
+    <label style="margin-top: 40px"><b>Packets</b></label><br>
     <input th:each="packet : ${packetList}"
            type="checkbox" th:value="${packet.name}"
            th:field="*{packets}"
